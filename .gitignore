@@ -1,0 +1,12 @@
+# Editor cruft
+.DS_Store
+*.swp
+*~
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# Eval workspace artifacts (we keep evals/ but not workspace runs)
+*-workspace/
