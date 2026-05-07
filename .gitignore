@@ -10,3 +10,6 @@ __pycache__/
 
 # Eval workspace artifacts (we keep evals/ but not workspace runs)
 *-workspace/
+
+# Fetched IG slides (raw inputs, not library state)
+assets/fetched/
