@@ -32,6 +32,7 @@ Trigger even if the user does not name this skill explicitly. The skill handles 
    - **Images attached + no other instruction** → deconstruction (default)
    - **Images attached + "give me a brief in this style"** → deconstruction first, then brief
    - **No images + "design something in @creator's style"** → brief only
+   - **Instagram URL provided (no images)** → fetch slides via Branch D, then deconstruct
    - **"re-synthesize"** → maintenance task (see below)
 
 ## Branch A: Deconstruction
@@ -63,6 +64,18 @@ Follow `references/generation-brief-template.md`. Steps:
 3. Identify the output format (Figma / Midjourney / copy-only). If unspecified, ask once, then use that choice for the rest of the conversation.
 4. Fill the chosen template (`assets/figma-spec-template.md`, `assets/midjourney-prompt-template.md`, or the inline copy-only format).
 5. Output inline. Save to disk only if the user says "save this brief."
+
+## Branch D: Fetch from Instagram URL
+
+If the user pastes an Instagram post URL (`instagram.com/p/<shortcode>/` or `/reel/<shortcode>/`) without attaching images, follow `references/fetcher-protocol.md`:
+
+1. Run `python3 scripts/fetch-carousel.py "<url>" --cookies-from-browser firefox` (default browser; ask the user if their session lives elsewhere). Capture the JSON output.
+2. If the script reports `gallery-dl is not installed`, surface the install command (`pip install gallery-dl`) and stop — do not auto-install.
+3. Confirm the fetched creator handle and slide count back to the user before starting Pass 1. Mismatches between the user's stated creator and the fetcher's result must be reconciled before writing the entry (filenames depend on the handle).
+4. If the URL is a profile, story, or tag page (not a single post), ask the user for a specific post URL — do not attempt to fetch.
+5. With slides on disk at `assets/fetched/<shortcode>/`, hand off to **Branch A: Deconstruction** as if the user had attached the images directly. The fetcher is purely an input shim.
+
+The `assets/fetched/` directory is gitignored — it accumulates raw inputs, not library state.
 
 ## Branch C: Maintenance ("re-synthesize" / "audit")
 
@@ -114,6 +127,8 @@ Otherwise proceed with sensible defaults documented above.
 | `assets/deconstruction-template.md` | Composing a per-carousel entry |
 | `assets/figma-spec-template.md` | Outputting a Figma brief |
 | `assets/midjourney-prompt-template.md` | Outputting AI image prompts |
+| `references/fetcher-protocol.md` | When user provides an IG URL instead of attached images (Branch D) |
+| `scripts/fetch-carousel.py` | Invoked from Branch D to download carousel slides via gallery-dl |
 | `references/style-dna/_index.md` | Pre-flight on every task |
 | `references/style-dna/<creator>/_creator-summary.md` | When user names a creator |
 | `references/style-dna/_synthesis.md` | When user wants library-wide brief or audit |
