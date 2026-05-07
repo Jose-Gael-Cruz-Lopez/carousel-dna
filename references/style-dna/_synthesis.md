@@ -5,8 +5,8 @@ creators_synthesized: []
 entries_total: 0
 generated_on: <will be set on first synthesis>
 universal_patterns: []
-creator_signatures: {}
-engagement_findings: []
+creator_signatures: []
+engagement_findings: null
 ---
 
 # Cross-Creator Synthesis

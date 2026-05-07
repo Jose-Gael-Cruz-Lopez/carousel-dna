@@ -72,7 +72,7 @@ Different tools accept different flags. Translate the suffix for the user's actu
 
 ## When NOT to use AI imagery for a carousel
 
-Skip this template entirely and redirect the user to the Figma template (`assets/figma-prompt-template.md`) when the captured style is one of the following:
+Skip this template entirely and redirect the user to the Figma template (`assets/figma-spec-template.md`) when the captured style is one of the following:
 
 - **Typography-only carousels.** If the Schema A entry has `imagery.type: none` across the creator's full library and `integration.text_image_relation: text-driven` or `typography-as-image`, AI imagery will only get in the way. The style *is* the type.
 - **Screenshot- or mockup-driven.** If `imagery.type` is dominantly `screenshot` or `mockup-device` (per `references/visual-vocabulary.md` → Imagery treatment → Type tags), the user needs real screenshots and device frames, not AI hallucinations of UIs.

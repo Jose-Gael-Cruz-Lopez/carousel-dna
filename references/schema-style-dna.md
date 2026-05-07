@@ -146,7 +146,7 @@ The YAML block above is itself the canonical filled-in example for `creator: @hu
 
 ## Schema B: `entry_type: creator_summary`
 
-The per-creator synthesis entry. One file per creator, regenerated when new carousels are added. Filename pattern: `<creator-handle>/_summary.md`.
+The per-creator synthesis entry. One file per creator, regenerated when new carousels are added. Filename pattern: `<creator-handle>/_creator-summary.md`.
 
 ```yaml
 schema_version: 1
@@ -211,7 +211,7 @@ Below the YAML, write four prose sections in this order:
 
 ## Schema C: `entry_type: cross_synthesis`
 
-The global library synthesis. One file at `references/style-dna/_cross-synthesis.md`. Regenerated when ≥2 creators or ≥10 entries are present.
+The global library synthesis. One file at `references/style-dna/_synthesis.md`. Regenerated when ≥2 creators or ≥10 entries are present.
 
 ```yaml
 schema_version: 1
@@ -283,7 +283,7 @@ An entry is valid if and only if **all** of the following hold:
 7. Every entry in `tags` matches `^[a-z0-9]+(-[a-z0-9]+)*$`.
 8. The filename follows the pattern in the **Filename convention** section above.
 
-A validation script lives at `scripts/validate-entry.py` (added in phase 06) and runs all eight checks.
+A validation script is **planned** at `scripts/validate-entry.py` and will run all eight checks. Until it ships, run the eight rules manually before committing an entry.
 
 ---
 

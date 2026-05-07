@@ -56,7 +56,7 @@ Slide count: <N>
 
 ### Slide <last> — CTA
 - **CTA text:** "<exact copy>"
-- **CTA type:** save-prompt | share-prompt | follow-prompt | multi
+- **CTA type:** save | share | follow | comment | link-in-bio | none  <!-- Schema A `cta.type` enum; pick one -->
 - **Visual treatment:** <description>
 
 ## Motif system to enforce across slides

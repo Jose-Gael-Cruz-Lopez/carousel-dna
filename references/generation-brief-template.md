@@ -93,7 +93,7 @@ Body: "<text>"
 
 ## CTA slide
 Text: "<exact CTA copy>"
-Type: save-prompt | share-prompt | follow-prompt
+Type: save | share | follow | comment | link-in-bio | none  <!-- Schema A enum; pick one -->
 
 ## Notes for the writer
 <Mismatches between topic and style; spots where the captured voice has to stretch.>

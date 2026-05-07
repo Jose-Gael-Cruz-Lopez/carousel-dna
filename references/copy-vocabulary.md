@@ -146,7 +146,7 @@ When filling `engagement_inferred.slide_2_standalone` (boolean), apply this test
 
 ## 4. CTA patterns
 
-Use the tag string in `copy.cta.type`. The schema currently lists `save | share | follow | comment | link-in-bio | none`; the canonical extended set below maps onto those values, with `multi` reserved for combos and added to creator_summary notes.
+**The value written into `copy.cta.type` MUST be one of the Schema A enum values:** `save | share | follow | comment | link-in-bio | none`. The category labels below (`save-prompt`, `share-prompt`, etc.) are descriptive prose names — use them in body text, not as YAML values. The mapping is one-to-one: `save-prompt` → `save`, `share-prompt` → `share`, `comment-prompt` → `comment`, `follow-prompt` → `follow`, `link-cta` → `link-in-bio`, `none` → `none`. Combo CTAs (two prompts on one slide) are recorded by setting the dominant prompt's enum and noting the secondary in body prose.
 
 ### `save-prompt`
 
@@ -241,7 +241,7 @@ Use one of: `academic`, `professional`, `casual`, `gen-z-internet`, `poetic`.
 
 ### Person
 
-Match `copy.voice.person` to: `first` (I/we), `second` (you), `impersonal` (one/the reader), `mixed`.
+Match `copy.voice.person` to the schema enum: `first-person` (I/we), `second-person` (you), `third-person` (one/the reader/he/she/they), `mixed`.
 
 ---
 
@@ -290,7 +290,7 @@ Every YAML field in the schema's `copy:` block, mapped to its definition section
 | `copy.cta.placement` | Schema-defined: `final-slide | every-slide | none | inline` |
 | `copy.cta.copy` | Free text — quote verbatim |
 | `copy.voice.tone` | §5 Voice and tone markers (register + tone descriptors) |
-| `copy.voice.person` | §5 Voice and tone markers (`first | second | impersonal | mixed`) |
+| `copy.voice.person` | §5 Voice and tone markers (`first-person | second-person | third-person | mixed`) |
 | `copy.voice.formality` | §5 Voice and tone markers (register + casing patterns) |
 | `engagement_inferred.slide_2_standalone` | §3 Slide-2 standalone test |
 | `engagement_inferred.swipe_cliffhangers` | §7 Cliffhanger devices |

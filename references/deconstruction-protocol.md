@@ -230,7 +230,7 @@ Sum to a 5–25 score. Map: 5–10 → `low`, 11–18 → `med`, 19–25 → `hi
 
 Apply the cover-your-hand test from `engagement-signals.md` §4 / `copy-vocabulary.md` §3. Slide 2 passes if it introduces or restates the central tension, is legible at thumbnail size, and makes sense without slide 1 context (no dangling pronouns).
 
-Record `engagement_inferred.slide_2_standalone` as `true` or `false`. If neither cleanly applies, note "medium" in body prose and pick the boolean closest to the truth.
+Record `engagement_inferred.slide_2_standalone` as `true` or `false`. The schema is strict boolean — no "medium" hedge. If you're tempted to hedge, you didn't actually run the cover-with-your-hand test; run it again and commit to one answer.
 
 ### 7.3 Save-bait
 
@@ -244,9 +244,11 @@ Map to `engagement_inferred.save_bait`:
 
 ### 7.4 Send-bait
 
-Per `engagement-signals.md` §6: `yes` (clear identity callout or universal truism plus explicit send/tag CTA), `no` (creator-centric or abstract, no "this is so them" trigger), or `implicit` (relatable framing exists but no explicit send/tag prompt).
+Per `engagement-signals.md` §6, map directly to `engagement_inferred.send_bait` using `high | med | low`:
 
-Map to `engagement_inferred.send_bait`: `high | med | low`.
+- `high` — clear identity callout or universal truism plus an explicit send/tag CTA on at least one slide.
+- `med` — relatable framing or identity callout exists, but no explicit send/tag prompt.
+- `low` — creator-centric or abstract; no "this is so them" trigger and no send CTA.
 
 ### 7.5 Loopability
 
@@ -380,7 +382,7 @@ This test is easy to forget because the cover is so loud. Before declaring Pass 
 
 ### 12.6 Finishing without checking validation
 
-Before declaring the entry done, mentally run the eight validation rules from `schema-style-dna.md` → Validation rules: YAML parses, all required fields present and non-null, `schema_version: 1`, slide-count matches word-count-list length, all contrast pairs reference declared palette colors, hex codes match `^#[0-9A-F]{6}$`, tags match `^[a-z0-9]+(-[a-z0-9]+)*$`, filename follows the convention. The validation script (`scripts/validate-entry.py`) will catch these later, but catching them now is cheaper.
+Before declaring the entry done, mentally run the eight validation rules from `schema-style-dna.md` → Validation rules: YAML parses, all required fields present and non-null, `schema_version: 1`, slide-count matches word-count-list length, all contrast pairs reference declared palette colors, hex codes match `^#[0-9A-F]{6}$`, tags match `^[a-z0-9]+(-[a-z0-9]+)*$`, filename follows the convention. A validation script (`scripts/validate-entry.py`) is planned but not yet shipped — for now, run the eight rules manually.
 
 ---
 
